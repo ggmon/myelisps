@@ -56,20 +56,6 @@
       )))
 
 
-;; (defun get-template (from what)
-;;   (interactive "sFrom:\nsWhat:")
-;;   (let (beg end (file (concat "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES/" from ".tpl")) (match (concat "----" what "----")))
-;;    (progn
-;;    (with-temp-buffer 
-;;        (message "%s" file)
-;;       (insert-file-contents file)
-;;       (setq beg (re-search-forward match))
-;;       (re-search-forward match)
-;;       (setq end (re-search-backward match))
-;;       (copy-region-as-kill beg end))
-;;  (yank)    
-;;  (template-repalce-holders from)
-;; )))
 
 (defun get-template ()
   (interactive)
@@ -77,7 +63,7 @@
                               (completing-read "from:"
                                                (mapcar (lambda(str)(list (substring str 0 -4)))(directory-files "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES" nil "\\.tpl$"))) ".tpl"))
             (match (concat "----" (completing-read "what:" '()) "----")))
-    (progn
+    (prognp
       (with-temp-buffer 
         (message "%s" file)
         (insert-file-contents file)
@@ -102,7 +88,8 @@
    (condition-case err
     (progn               
     (kill-ring-save (mark) (point))
-    (switch-to-buffer (find-file (concat "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES/" (completing-read "where: " '()) ".tpl")))
+    (switch-to-buffer (find-file (concat "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES/" (completing-read "from:"
+                                               (mapcar (lambda(str)(list (substring str 0 -4)))(directory-files "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES" nil "\\.tpl$")))  ".tpl")))
       (goto-char (point-max))pp
       (let ((delimiter (concat "----" (completing-read "what: " '()) "----")))
       (insert delimiter)
