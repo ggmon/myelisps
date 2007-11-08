@@ -63,11 +63,12 @@
   (let (beg end (file (concat "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES/" 
                               (completing-read "from:"
                                                (mapcar (lambda(str)(list (substring str 0 -4)))(directory-files "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES" nil "\\.tpl$"))) ".tpl"))
-            (match (concat "----" (completing-read "what:" (list-current-entries)) "----")))
+            match )
     (progn
       (with-temp-buffer 
-        (message "%s" file)
+        ;(message "%s" file)
         (insert-file-contents file)
+        (setq match (concat "----" (completing-read "what:" (list-current-entries)) "----"))
         (setq beg (re-search-forward match))
         (re-search-forward match)
         (setq end (re-search-backward match))
