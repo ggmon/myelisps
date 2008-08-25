@@ -125,10 +125,10 @@
     (switch-to-buffer (find-file (concat TEMPLATE-DIR (completing-read "To:"
                                                (mapcar (lambda(str)(list (substring str 0 -4)))(directory-files TEMPLATE-DIR nil "\\.tpl$")))  ".tpl")))
       (goto-char (point-max))
-      (let ((delimiter (concat "\n----" (completing-read "what: " '()) "----\n")))
-      (insert delimiter )
+      (let ((delimiter (concat "----" (completing-read "what: " '()) "----")))
+      (insert (concat delimiter "\n"))
       (yank)
-      (insert delimiter ))
+      (insert (concat "\n" delimiter "\n")))
      ;(insert  (kill-ring beg end))
       (save-buffer)
      (kill-buffer (current-buffer))
