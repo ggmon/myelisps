@@ -1,4 +1,4 @@
-(setq TEMPLATE-DIR "/mnt/sda7/RESOURCES/HELPMYSELF/NEWTEMPLATES/")
+(defvar TEMPLATE-DIR "/home/ggmon/emacs/NEWTEMPLATES/")
 
 (defun get-from-user (prompt)
   ;; get the value from user
@@ -57,9 +57,6 @@
 						     (directory-files (concat file "/" ) nil "\\.tpl$"))) ".tpl" ))
       (template-replace-holders )
       (replace-potential-holders))))
-
-
-
 
 
 (defun write-template-old()

@@ -1,5 +1,5 @@
-(setq org "/mnt/sda7/RESOURCES/HELPMYSELF/TEMPLATES/")
-(setq new "/mnt/sda7/RESOURCES/HELPMYSELF/NEWTEMPLATES/")
+(setq org "/home/ggmon/emacs/TEMPLATES/")
+(setq new "/home/ggmon/emacs/NEWTEMPLATES/")
 
 (defun recreate-templates()
   (interactive)
@@ -15,7 +15,6 @@
       )
     )
   )
-
 (defun migrate-template (tpl)
   (let ((tpldir (substring tpl 0 -4)) tpl-list)
     (progn
