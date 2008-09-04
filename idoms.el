@@ -1,4 +1,4 @@
-(defconst IDOMS-DIR "/mnt/sda7/RESOURCES/HELPMYSELF/IDOMS/")
+(setq IDOMS-DIR "/mnt/sda7/RESOURCES/HELPMYSELF/IDOMS/")
 
 (defun get-idoms()
   (interactive)
